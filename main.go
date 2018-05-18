@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	_ "loveHome/models"
 	_ "loveHome/routers"
 	"net/http"
 	"strings"
@@ -11,6 +12,11 @@ import (
 func main() {
 	ignoreStaticPath()
 
+	beego.SetStaticPath("/group1/M00", "fastdfs/storage_data/data")
+	/*_, _, err := models.FDFSUploadByFilename("./home01.jpg")
+	if err == nil {
+	}
+	*/
 	beego.Run()
 }
 
